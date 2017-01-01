@@ -22,7 +22,7 @@
 #include <linux/qpnp/pwm.h>
 #include <linux/err.h>
 #include <linux/string.h>
-
+#include <linux/display_state.h>
 #include "mdss_dsi.h"
 #ifdef TARGET_HW_MDSS_HDMI
 #include "mdss_dba_utils.h"
@@ -46,6 +46,13 @@ bool panel_rst_high_flag = 0;
 struct dsi_panel_cmds bist_cmds;
 bool bist_cmds_on = false;
 #endif
+
+bool display_on = true;
+
+bool is_display_on()
+{
+	return display_on;
+}
 
 void mdss_dsi_panel_pwm_cfg(struct mdss_dsi_ctrl_pdata *ctrl)
 {
@@ -918,6 +925,9 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		return -EINVAL;
 	}
 
+	display_on = true;
+
+
 	pinfo = &pdata->panel_info;
 	ctrl = container_of(pdata, struct mdss_dsi_ctrl_pdata,
 				panel_data);
@@ -1026,6 +1036,7 @@ static void mdss_dsi_panel_off_hdmi(struct mdss_dsi_ctrl_pdata *ctrl,
 		mdss_dba_utils_video_off(pinfo->dba_data);
 		mdss_dba_utils_hdcp_enable(pinfo->dba_data, false);
 	}
+	display_on = false;
 }
 #else
 static void mdss_dsi_panel_off_hdmi(struct mdss_dsi_ctrl_pdata *ctrl,
@@ -1817,7 +1828,7 @@ static int mdss_dsi_gen_read_status(struct mdss_dsi_ctrl_pdata *ctrl_pdata)
 					pr_err("%s: ft8716 ESD 0xAC read error\n",__func__);
 					esd_err_count = 0;
 					return -EINVAL;
-				}			
+				}
 			}
 			else
 			{
