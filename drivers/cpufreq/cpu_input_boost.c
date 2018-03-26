@@ -761,7 +761,6 @@ static void set_default_value(void)
 {
 	struct boost_policy *b = boost_policy_g;
 	struct ib_config *ib = &b->ib;
-	struct fb_policy *fb = &b->fb;
 
 	set_boost_bit(b, DRIVER_ENABLED);
 	ib->freq[0] = 960000;
