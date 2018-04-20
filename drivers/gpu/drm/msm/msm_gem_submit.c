@@ -38,7 +38,7 @@ static struct msm_gem_submit *submit_create(struct drm_device *dev,
 {
 	struct msm_gem_submit *submit;
 	uint64_t sz = sizeof(*submit) + ((u64)nr_bos * sizeof(submit->bos[0])) +
-		(nr_cmds * sizeof(submit->cmd[0]));
+		((u64)nr_cmds * sizeof(submit->cmd[0]));
 
 	if (sz > SIZE_MAX)
 		return NULL;
