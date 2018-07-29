@@ -2579,9 +2579,11 @@ static ssize_t test_sysfs_read_report_store(struct device *dev,
 		break;
 	default:
 	retval = test_sysfs_do_preparation_store(dev, attr, cmd, 1);
-	if (retval < 0)
+	//TODO Fix this warning
+	if (retval < 0){
 		goto exit;
-	break;
+		break;
+		}
 	}
 
 	retval = test_sysfs_get_report_store(dev, attr, cmd, 1);
@@ -2612,6 +2614,7 @@ static ssize_t test_sysfs_read_report_store(struct device *dev,
 	case F54_CALIBRATION:
 	case F54_FULL_RAW_CAP_NO_RX_COUPLING:
 	retval = test_sysfs_resume_touch_store(dev, attr, cmd, 1);
+	//TODO Fix this warning
 	if (retval < 0)
 		goto exit;
 	break;
