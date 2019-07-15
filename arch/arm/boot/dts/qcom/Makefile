@@ -22,7 +22,29 @@ dtb-$(CONFIG_ARCH_MSM8996) += \
 	msm8996-v3-pmi8996-le_x2_na-dvt2.dtb \
 	msm8996-v3-pmi8996-le_x2_na-pvt.dtb \
 	msm8996-v3-pmi8994-le_x2_na-pvt.dtb \
-	msm8996pro-v3-pmi8996-le_x2-pvt.dtb
+	msm8996pro-v3-pmi8996-le_x2-pvt.dtb \
+	dtbdump_10.dtb \
+	dtbdump_15.dtb \
+	dtbdump_1.dtb \
+	dtbdump_3.dtb \
+	dtbdump_8.dtb \
+	dtbdump_11.dtb \
+	dtbdump_16.dtb \
+	dtbdump_20.dtb \
+	dtbdump_4.dtb \
+	dtbdump_9.dtb \
+	dtbdump_12.dtb \
+	dtbdump_17.dtb \
+	dtbdump_21.dtb \
+	dtbdump_5.dtb \
+	dtbdump_13.dtb \
+	dtbdump_18.dtb \
+	dtbdump_22.dtb \
+	dtbdump_6.dtb \
+	dtbdump_14.dtb \
+	dtbdump_19.dtb \
+	dtbdump_2.dtb \
+	dtbdump_7.dtb
 endif
 
 ifeq ($(CONFIG_PRODUCT_LE_ZL1),y)
